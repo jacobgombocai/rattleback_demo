@@ -54,7 +54,8 @@ resource "aws_s3_bucket_acl" "uut" {
 }
 
 resource "aws_s3_bucket" "my_demo_bucket" {
-  versioning {
+ 
+versioning {
     enabled = true
   }
 }
