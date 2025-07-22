@@ -60,3 +60,19 @@ resource "aws_s3_object" "uut" {
   key    = "helloworld"
   source = "files/test.txt"
 }
+resource "aws_s3_bucket_public_access_block" "my_aws_s3_bucket_public_access_block_aws_s3_bucket_my_demo_bucket" {
+  bucket             = aws_s3_bucket.my_demo_bucket.id
+  ignore_public_acls = true
+}
+resource "aws_s3_bucket_versioning" "my_aws_s3_bucket_versioning_aws_s3_bucket_uut" {
+  bucket = aws_s3_bucket.uut.id
+  versioning_configuration {
+    status = "Enabled"
+  }
+}
+resource "aws_s3_bucket_versioning" "my_aws_s3_bucket_versioning_aws_s3_bucket_my_demo_bucket" {
+  bucket = aws_s3_bucket.my_demo_bucket.id
+  versioning_configuration {
+    status = "Enabled"
+  }
+}
