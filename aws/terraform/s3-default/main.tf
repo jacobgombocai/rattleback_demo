@@ -43,14 +43,7 @@ resource "aws_s3_bucket_public_access_block" "uut" {
 # The ACL needs to be set in an object to ensure the access block and ownership
 # controls are set first.
 resource "aws_s3_bucket_acl" "uut" {
-  bucket = aws_s3_bucket.uut.id
 
-  acl = var.uut_bucket_acl
-
-  depends_on = [
-    aws_s3_bucket_ownership_controls.uut,
-    aws_s3_bucket_public_access_block.uut,
-  ]
 }
 
 resource "aws_s3_bucket" "my_demo_bucket" {
